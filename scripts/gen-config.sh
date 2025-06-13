@@ -10,4 +10,4 @@ cat << EOF > $CONFIG_FILE
 EOF
 
 
-# sed -i -E "s/(.*=)(.*)/\1 /g" $(CONFIG)
+# sed -i -E "s/(.*=)(.*)/\1 /g"
