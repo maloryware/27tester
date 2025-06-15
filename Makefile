@@ -1,33 +1,42 @@
-TESTS_DIR = .tests
+NAME: makemake
 
+# jic
 TARGET_RELATIVE = $(shell (cd ..; pwd) | awk -F '/' '{print $$NF}')
 TARGET = $(shell (cd ..; pwd))
-
-# watch and learn kids, this is how you obfuscate a default file
 
 CONFIG = $(TARGET)/.27tester
 
 MAKE = make -s
 
-all: test
+all: $(NAME)
 
-fix-config:
-	@clear
-	@echo Running "fix-config"
-	@echo CONFIG: $(CONFIG)
-	@rm -f $(CONFIG)
-	@$(MAKE) $(CONFIG)
+fix: .fix-config
 
-test:
+$(NAME):
 	@clear
 	@if ! [ -a $(CONFIG) ]; then \
 		$(MAKE) $(CONFIG); \
 	fi
 	@echo Test finished.
 
+
+### --- Configuration setup, first-launch variable definitions, etc --- ###
+
 $(CONFIG):
 	@echo Generating $(CONFIG)...
-	@sh scripts/gen-config.sh $(CONFIG) 
+	@sh scripts/gen-config.sh $(CONFIG)
+
+### --- Debug instructions --- ###
+
+.fix-config:
+	@clear
+	@echo Running "fix-config"
+	@rm -f $(CONFIG)
+	@$(MAKE) $(CONFIG)
 
 
 
+### --- Usage instructions, banner --- ###
+
+help:
+	@sh scripts/menu-help.sh
