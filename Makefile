@@ -1,24 +1,26 @@
-NAME: makemake
+NAME = 27tester
 
 # jic
-TARGET_RELATIVE = $(shell (cd ..; pwd) | awk -F '/' '{print $$NF}')
-TARGET = $(shell (cd ..; pwd))
+TARGET = $(shell (cd ..; pwd) | awk -F '/' '{print $$NF}')
+PATH = $(shell (cd ..; pwd))
 
-CONFIG = $(TARGET)/.27tester
+27 = $(PATH)/27tester
+
+CONFIG = $(27)/config.toml
 
 MAKE = make -s
 
 all: $(NAME)
 
-fix: .fix-config
-
 $(NAME):
 	@clear
 	@if ! [ -a $(CONFIG) ]; then \
-		$(MAKE) $(CONFIG); \
+		$(MAKE) $(CONFIG); else \
+		echo "All set."; \
 	fi
 	@echo Test finished.
 
+# bash scripts/setup.sh $(TARGET); \
 
 ### --- Configuration setup, first-launch variable definitions, etc --- ###
 
@@ -28,15 +30,19 @@ $(CONFIG):
 
 ### --- Debug instructions --- ###
 
-.fix-config:
+re: .rm-config $(NAME)
+
+.rm-config:
+	@rm -f $(CONFIG)
+
+fix:
 	@clear
 	@echo Running "fix-config"
 	@rm -f $(CONFIG)
 	@$(MAKE) $(CONFIG)
 
 
-
 ### --- Usage instructions, banner --- ###
 
 help:
-	@sh scripts/menu-help.sh
+	@bash $(27)/scripts/menu-help.sh
