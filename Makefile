@@ -2,9 +2,9 @@ NAME = 27tester
 
 # jic
 TARGET = $(shell (cd ..; pwd) | awk -F '/' '{print $$NF}')
-PATH = $(shell (cd ..; pwd))
+DIRECTORY = $(shell (cd ..; pwd))
 
-27 = $(PATH)/27tester
+27 = $(DIRECTORY)/27tester
 
 CONFIG = $(27)/config.toml
 
@@ -13,12 +13,11 @@ MAKE = make -s
 all: $(NAME)
 
 $(NAME):
-	@clear
+	clear
 	@if ! [ -a $(CONFIG) ]; then \
-		$(MAKE) $(CONFIG); else \
-		echo "All set."; \
+		echo First run detected - initializing config...; $(MAKE) $(CONFIG);
 	fi
-	@echo Test finished.
+	
 
 # bash scripts/setup.sh $(TARGET); \
 
@@ -32,10 +31,11 @@ $(CONFIG):
 
 re: .rm-config $(NAME)
 
+
 .rm-config:
 	@rm -f $(CONFIG)
 
-fix:
+config:
 	@clear
 	@echo Running "fix-config"
 	@rm -f $(CONFIG)
@@ -45,4 +45,4 @@ fix:
 ### --- Usage instructions, banner --- ###
 
 help:
-	@bash $(27)/scripts/menu-help.sh
+	@/usr/bin/bash $(27)/scripts/menu-help.sh

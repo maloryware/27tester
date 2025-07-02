@@ -1,0 +1,9 @@
+	[ENVIRONMENT_VARS]
+	project=
+	dir=
+
+	[OPTIONS]
+	use_defaults=true
+	
+	[REMOTES]
+	default=https://github.com/maloryware/27tester-tests

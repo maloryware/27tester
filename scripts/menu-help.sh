@@ -1,3 +1,5 @@
+#!/bin/bash
+
 clear
 echo
 echo "    ██████  ███████ ";
@@ -29,17 +31,16 @@ echo
 echo
 echo
 echo "          commands:"
-echo "             make"
+echo "             27tester"
 echo "                  \-- runs the program"
-echo "             make help"
+echo "             27tester help"
 echo "                  \-- opens this page"
-echo "             make fix"
-echo "                  \-- reruns the configuration script"
+echo "             27tester config"
+echo "                  \-- runs the configuration setup"
 echo
 echo
 echo
 echo "          credits:"
-echo "          development - maloryware"
 echo "          ascii art - generated with https://patorjk.com/software/taag"
 echo
 echo

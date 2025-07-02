@@ -1,19 +1,7 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    gen-config.sh                                      :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: Mal <malory@onenetbeyond.org>              +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/26 10:28:03 by Mal               #+#    #+#              #
-#    Updated: 2025/06/26 10:30:36 by Mal              ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #!/bin/bash
 CONFIG=$1
 TARGET=$2
-PATH=$3
+DIRECTORY=$3
 
 SUCCESS=0
 while [ "$SUCCESS" != 1 ]
@@ -39,7 +27,7 @@ done
 cat << EOF > $CONFIG
 	[ENVIRONMENT_VARS]
 	project=$TARGET
-	path=$PATH
+	dir=$DIRECTORY
 
 	[OPTIONS]
 	use_defaults=$USE_DEFAULTS
