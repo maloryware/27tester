@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
 # Executable for 27tester - simply runs "make" within ~/.local/27tester, passing along any relevant instructions
